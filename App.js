@@ -1,29 +1,40 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
-export class Potato extends React.Component {
-  render() {
-    return (
-      <Text> {this.props.kind} kind of potato!</Text>
-    );
-  }
-}
+import { ScrollView, StyleSheet, Text, View, Image, TextInput, Button, Alert} from 'react-native';
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {text: ''}
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Potato kind="woah"/>
+      <View>
+          <TextInput 
+            style={{height: 100}}
+            placeholder="Input your schedule here"
+            onChangeText={(text) => this.setState({text})}
+          />
+        <ScrollView>
+          <Text style={var_styles.text1}>
+            {this.state.text}
+          </Text>
+        </ScrollView>
+          <Button
+            onPress={() => {
+              // Alert.alert('You tapped the button!');
+              this.setState({text: "you pressed the button heh"});
+            }}
+            title="Press Me"
+          />
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+var var_styles = StyleSheet.create({
+  text1: {
+    paddingTop: 20, 
+    fontSize: 42
+  }
 });
