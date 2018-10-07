@@ -1,11 +1,19 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+export class Potato extends React.Component {
+  render() {
+    return (
+      <Text> {this.props.kind} kind of potato!</Text>
+    );
+  }
+}
+
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open art working on your app!</Text>
+        <Potato kind="woah"/>
       </View>
     );
   }
